@@ -47,7 +47,6 @@
                 <groupId>org.glassfish.main.extras</groupId>
                 <artifactId>glassfish-embedded-all</artifactId>
                 <version>4.1.1</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
@@ -138,6 +137,20 @@
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
                 <version>${selenium.version}</version>
+                <!--
+                    There is a bug in this transitive dependency.
+                 -->
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>25.1-jre</version>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>

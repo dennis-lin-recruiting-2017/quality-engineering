@@ -1,6 +1,7 @@
 package com.dennislin.github.qe.common;
 
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -33,21 +34,17 @@ public final class WebDriverUtil {
     }
 
     public static RemoteWebDriver getDefaultFirefox() {
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-
-        return new RemoteWebDriver(getSeleniumServerURL(), capabilities);
+        return new RemoteWebDriver(getSeleniumServerURL(), new FirefoxOptions());
     }
 
     /**
      * @return a WebDriver instance that references a headless Chrome browser
      */
     public static RemoteWebDriver getDefaultChrome() {
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("headless");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
-        return new RemoteWebDriver(getSeleniumServerURL(), capabilities);
+        return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
     }
 
     public static RemoteWebDriver getDefaultSafari() {

@@ -1,0 +1,30 @@
+#JetBrains AppCode
+.idea/
+
+# Generated files
+VersionX-revision.h
+
+# build products 
+xcuserdata/
+DerivedData/
+build/
+adhoc/
+*.[oa]
+
+# CocoaPods
+Pods/
+
+# Other source repository archive directories 
+.hg
+.svn
+CVS
+
+# automatic backup files
+*~.nib
+*.swp
+*.lock
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/

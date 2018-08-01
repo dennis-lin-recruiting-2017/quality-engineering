@@ -2,7 +2,7 @@ package com.dennislin.github.qe.automationpractice;
 
 import com.dennislin.github.qe.automationpractice.pages.LandingPage;
 import com.dennislin.github.qe.common.WebDriverUtil;
-import com.dennislin.github.qe.framework.AugmentedWebDriver;
+import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ public class TestBrowse {
     @Test
     public void testBrowseLandingPage() throws IOException {
         RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
-        AugmentedWebDriver webDriver = new AugmentedWebDriver(plainWebDriver);
+        VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
         webDriver.get("http://www.automationpractice.com");
 
         LandingPage landingPage = new LandingPage(webDriver);

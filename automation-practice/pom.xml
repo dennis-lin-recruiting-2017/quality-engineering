@@ -53,17 +53,6 @@
             <classifier>jdk15</classifier>
         </dependency>
         <!--
-             Selenium dependencies.
-         -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-        </dependency>
-        <!--
              Database dependencies.
           -->
         <dependency>

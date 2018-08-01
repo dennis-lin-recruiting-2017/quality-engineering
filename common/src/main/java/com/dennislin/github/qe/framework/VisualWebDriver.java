@@ -7,19 +7,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public final class AugmentedWebDriver extends AugmentedWebDriverImpl implements JavascriptExecutor {
-    public AugmentedWebDriver(RemoteWebDriver driver) {
+public final class VisualWebDriver extends BaseVisualWebDriver implements JavascriptExecutor {
+    public VisualWebDriver(RemoteWebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public Object executeScript(String s, Object... objects) {
-        return super.executeScript(s, objects);
-    }
-
-    @Override
-    public Object executeAsyncScript(String s, Object... objects) {
-        return super.executeAsyncScript(s, objects);
     }
 
     public void savePageSourceToFile(final String fileLocation) throws IOException {

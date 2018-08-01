@@ -1,9 +1,9 @@
 package com.dennislin.github.qe.framework;
 
 public abstract class BasePageObject {
-    private final AugmentedWebDriver objWebDriver;
+    private final VisualWebDriver objWebDriver;
 
-    public BasePageObject(final AugmentedWebDriver webDriver) {
+    public BasePageObject(final VisualWebDriver webDriver) {
         objWebDriver = webDriver;
     }
 
@@ -12,7 +12,7 @@ public abstract class BasePageObject {
         throw new RuntimeException("Should not use default constructor");
     }
 
-    public AugmentedWebDriver getWebDriver() {
+    public VisualWebDriver getWebDriver() {
         return objWebDriver;
     }
 }

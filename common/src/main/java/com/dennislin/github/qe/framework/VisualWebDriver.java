@@ -2,6 +2,9 @@ package com.dennislin.github.qe.framework;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.FileOutputStream;
@@ -23,5 +26,11 @@ public final class VisualWebDriver extends BaseVisualWebDriver implements Javasc
         FileOutputStream outfile = new FileOutputStream(fileLocation);
         outfile.write(dataScreenshot);
         outfile.close();
+    }
+
+    public Point getCenterOfWebElement(final WebElement webElement) {
+        final Rectangle rectangle = webElement.getRect();
+
+        return new Point(rectangle.getX() + rectangle.getWidth() / 2, rectangle.getY() + rectangle.getHeight() / 2);
     }
 }

@@ -47,6 +47,12 @@ public final class WebDriverUtil {
         return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
     }
 
+    public static RemoteWebDriver getDefaultChromeUI() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+
+        return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
+    }
+
     public static RemoteWebDriver getDefaultSafari() {
         throw new RuntimeException("Not implmented yet.");
     }

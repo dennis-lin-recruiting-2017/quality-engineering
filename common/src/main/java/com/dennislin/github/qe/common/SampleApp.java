@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class SampleApp {
     public static final void main2(final String[] args) throws Exception {
-        RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChrome();
+        RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeHeadless();
         VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
         webDriver.get("http://automationpractice.com/index.php");
 

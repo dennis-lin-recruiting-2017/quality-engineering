@@ -411,6 +411,10 @@
         </pluginManagement>
     </build>
     <modules>
+        <!--
+        <module>../ciborgarmy-selenium</module>
+         -->
+        <module>../ciborgarmy</module>
         <module>../quality-engineering-framework</module>
         <module>common</module>
         <module>automation-practice</module>

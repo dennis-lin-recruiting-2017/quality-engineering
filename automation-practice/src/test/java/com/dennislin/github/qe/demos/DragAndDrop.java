@@ -127,4 +127,28 @@ public class DragAndDrop {
     System.out.println(String.format("Total time of %d for %d screenshots", totalTime, NUM_SCREENSHOTS));
     webDriver.close();
   }
+
+  @Test
+  public void testGetBrowserDimensions() {
+    RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
+    VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
+    webDriver.manage().window().maximize();
+    webDriver.get("http://localhost:8080");
+
+    final int NUM_ATTEMPTS = 10;
+    long totalTime = 0;
+    for (int counter = 0; counter < NUM_ATTEMPTS; counter++) {
+      final long timestampStart = System.currentTimeMillis();
+      webDriver.manage().window().getSize();
+      webDriver.manage().window().getPosition();
+      final long timestampEnd = System.currentTimeMillis();
+      long timeElapsed = timestampEnd - timestampStart;
+      totalTime += timeElapsed;
+      System.out.println(String.format("**** Get browser dimensions attempt #%d: %d ms", counter, timeElapsed));
+    }
+
+    System.out.println(String.format("Total time of %d for %d screenshots", totalTime, NUM_ATTEMPTS));
+    webDriver.close();
+  }
 }
+

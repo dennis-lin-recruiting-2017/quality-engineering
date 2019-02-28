@@ -16,11 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DragAndDrop {
-  @Test(enabled = false)
+  @Test
   public void test() throws Exception {
     //RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeUI();
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
+    //RemoteWebDriver webDriver = WebDriverUtil.getDefaultFirefox();
     webDriver.get("https://html5demos.com/drag/");
 
     List<Long> listTimestamps = new ArrayList<>();
@@ -87,7 +88,7 @@ public class DragAndDrop {
 
     testExtension(webDriver, elementBin, elementDraggable1, elementDraggable2, elementDraggable3, elementDraggable4, elementDraggable5);
 
-    //webDriver.close();
+    webDriver.close();
   }
 
   private void testExtension(final VisualWebDriver webDriver,

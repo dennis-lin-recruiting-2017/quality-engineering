@@ -8,6 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
@@ -20,6 +21,18 @@ import java.util.Map;
 
 public class TestBrowse {
     @Test
+    public void testRetrieveElementImages() throws IOException {
+        final RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
+        final VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
+        webDriver.get("http://www.automationpractice.com");
+
+        final List<WebElement> listWebElements = webDriver.findElementsByCssSelector("div.product-image-container");
+        System.out.println("*** Num products found: " + listWebElements.size());
+
+        webDriver.close();
+    }
+
+    @Test
     public void testBrowseLandingPage() throws IOException {
         RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
         VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
@@ -28,7 +41,7 @@ public class TestBrowse {
         List<WebElement> listWebElements = webDriver.findElements(By.xpath("//*"));
         System.out.println("**** Num elements: " + listWebElements.size());
 
-        FileOutputStream outfile = new FileOutputStream("/Users/dennislin/workspace/github_public/ciborgarmy-selenium/temp/dump.out");
+        FileOutputStream outfile = new FileOutputStream("./dump.out");
             outfile.write(webDriver.getPageSource().getBytes());
         outfile.close();
 
@@ -39,7 +52,7 @@ public class TestBrowse {
 
         System.out.println("**** Num elements: " + listElements.size());
         System.out.println("**** Elapsed time (JSoup): " + (timestampEnd01 - timestampStart01));
-        outfile = new FileOutputStream("/Users/dennislin/workspace/github_public/ciborgarmy-selenium/temp/elements.out");
+        outfile = new FileOutputStream("./elements.out");
         for (Iterator<Element> it = listElements.iterator(); it.hasNext(); ) {
             Element element = it.next();
             outfile.write(element.tagName().getBytes());
@@ -51,13 +64,12 @@ public class TestBrowse {
             element.attributes();
         }
 
-        outfile = new FileOutputStream("/Users/dennislin/workspace/github_public/ciborgarmy-selenium/temp/page.out");
+        outfile = new FileOutputStream("./page.out");
         for (final WebElement webElement : listWebElements) {
             outfile.write(webElement.getTagName().getBytes());
             outfile.write("\n".getBytes());
         }
         outfile.close();
-
 
         webDriver.get("file:///Users/dennislin/workspace/github_public/ciborgarmy-selenium/temp/dump.out");
         long timestampStart02 = System.currentTimeMillis();
@@ -78,6 +90,9 @@ public class TestBrowse {
 
         //htmlDocument.body().  div.product-image-container
 
+        final Dimension viewportDimension = webDriver.manage().window().getSize();
+        System.out.println(String.format("**** Browser viewport size: (width=%d, height=%d)",
+            viewportDimension.width, viewportDimension.height));
         webDriver.saveScreenshotAsPNG("test2.png");
 
         webDriver.close();

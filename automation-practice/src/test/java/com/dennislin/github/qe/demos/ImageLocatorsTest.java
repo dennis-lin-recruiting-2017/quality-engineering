@@ -16,7 +16,7 @@ public class ImageLocatorsTest {
   public void testImageLocatorDragAndDrop() throws IOException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
-    webDriver.get("http://localhost:8080");
+    webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/");
     //webDriver.get("https://html5demos.com/drag/");
 
     System.out.println("Webdriver sessionID:" + webDriver.getSessionId());

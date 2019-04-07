@@ -26,28 +26,28 @@ public class DragAndDrop {
 
     List<Long> listTimestamps = new ArrayList<>();
 
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementBin = (RemoteWebElement) webDriver.findElement(By.cssSelector("#bin"));
     Dimension testSize = elementBin.getSize();
     String testAttribute = elementBin.getAttribute("id");
     Rectangle testRectangle = elementBin.getRect();
 
 
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable1 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#one"));
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable2 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#two"));
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable3 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#three"));
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable4 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#four"));
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable5 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#five"));
-    listTimestamps.add(new Long(System.currentTimeMillis()));
+    listTimestamps.add(System.currentTimeMillis());
 
     Document htmlDocument = Jsoup.parse(webDriver.getPageSource());
     List<Long> listTimestamps02 = new ArrayList<>();
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements00 = htmlDocument.select("#bin");
     elements00.forEach((element) -> {
       System.out.println("**** Bin element");
@@ -55,17 +55,17 @@ public class DragAndDrop {
         System.out.println(String.format("    %s = %s", attribute.getKey(), attribute.getValue()));
       });
     });
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements01 = htmlDocument.select("#one");
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements02 = htmlDocument.select("#two");
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements03 = htmlDocument.select("#three");
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements04 = htmlDocument.select("#four");
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     Elements elements05 = htmlDocument.select("#five");
-    listTimestamps02.add(new Long(System.currentTimeMillis()));
+    listTimestamps02.add(System.currentTimeMillis());
     System.out.println("**** WebDriver");
     for (int counter = 0; counter < listTimestamps.size() - 1; counter++) {
       long time1 = listTimestamps.get(counter);

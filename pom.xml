@@ -23,6 +23,21 @@
       <name>OSS Sonatype Staging</name>
       <url>http://oss.sonatype.org/content/groups/staging</url>
     </repository>
+    <repository>
+      <id>Mulesoft</id>
+      <name>Mulesoft</name>
+      <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+    </repository>
+    <repository>
+      <id>Alfresco</id>
+      <name>Alfresco</name>
+      <url>https://artifacts.alfresco.com/nexus/content/repositories/public</url>
+    </repository>
+    <repository>
+      <id>Consol</id>
+      <name>Consol</name>
+      <url>http://labs.consol.de/maven/repository</url>
+    </repository>
   </repositories>
 
   <pluginRepositories>
@@ -97,7 +112,7 @@
         <!--
         <artifactId>jersey-container-grizzly2-servlet</artifactId>
          -->
-        <artifactId>jersey-container-servlet-core</artifactId>
+        <artifactId>jersey-container-servlet</artifactId>
         <version>2.28</version>
       </dependency>
       <dependency>
@@ -109,6 +124,16 @@
         <groupId>org.glassfish.jersey.ext</groupId>
         <artifactId>jersey-mvc-jsp</artifactId>
         <version>2.28</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jersey.inject</groupId>
+        <artifactId>jersey-hk2</artifactId>
+        <version>2.28</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
       </dependency>
       <dependency>
         <groupId>com.graphql-java</groupId>

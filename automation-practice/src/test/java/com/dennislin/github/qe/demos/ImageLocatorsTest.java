@@ -1,6 +1,7 @@
 package com.dennislin.github.qe.demos;
 
 import com.dennislin.github.qe.common.WebDriverUtil;
+import com.dennislin.github.qe.framework.ImageFileUtil;
 import com.dennislin.github.qe.framework.ImageLocator;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.Rectangle;
@@ -8,6 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 
@@ -41,13 +43,20 @@ public class ImageLocatorsTest {
     System.out.println("Webdriver sessionID:" + webDriver.getSessionId());
 
     final ImageLocator imageLocator01 = new ImageLocator("vision/findImageOnScreen/dragDrop/tomcat.png");
-    final ImageLocator imageLocator02 = new ImageLocator("vision/findImageOnScreen/dragDrop/tomcat.png");
-    List<List<Rectangle>> listImageMatches = webDriver.getExtensionForVision().findMultipleImagesOnScreen(imageLocator01, imageLocator02);
+    final ImageLocator imageLocator02 = new ImageLocator("vision/findImageOnScreen/dragDrop/serverStatus.png");
+    final ImageLocator imageLocator03 = new ImageLocator("vision/findImageOnScreen/dragDrop/developerQuickStart.png");
+    final List<List<Rectangle>> listImageMatches = webDriver.getExtensionForVision().findMultipleImagesOnScreen(
+        imageLocator01, imageLocator02, imageLocator03);
 
     webDriver.close();
-    Assert.assertEquals(listImageMatches.size(), 2);
-    Assert.assertEquals(listImageMatches.get(0).size(), 1);
-    Assert.assertEquals(listImageMatches.get(1).size(), 1);
+    for (int counter = 0; counter < listImageMatches.size(); counter++) {
+      final List<Rectangle> listMatches = listImageMatches.get(counter);
+      Assert.assertEquals(listMatches.size(), 1);
+      for (final Rectangle rectangle : listMatches) {
+        System.out.println(String.format("**** Found matched region %d: (%d, %d), (width=%d, height=%d)",
+            counter, rectangle.x, rectangle.y, rectangle.width, rectangle.height));
+      }
+    }
   }
 
   @Test
@@ -92,8 +101,11 @@ public class ImageLocatorsTest {
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
 
-    final ImageLocator imageLocator = new ImageLocator("vision/findImageOnScreen/dragDrop/tomcat.png");
-    webDriver.getExtensionForVision().clickOnImage(imageLocator);
+    final ImageLocator imageLocator = new ImageLocator("vision/clickOnImage/securityConsiderationsHowTo.png");
+    Assert.assertTrue(webDriver.getExtensionForVision().clickOnImage(imageLocator));
+
+    final BufferedImage screenshot = webDriver.takeScreenshot();
+    ImageFileUtil.saveBufferedImageToFile(screenshot, "screenshotClickOnImage.png");
 
     webDriver.close();
   }

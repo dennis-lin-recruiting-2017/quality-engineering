@@ -21,8 +21,6 @@ public class DragAndDrop {
     //RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeUI();
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
-    //RemoteWebDriver webDriver = WebDriverUtil.getDefaultFirefox();
-    //webDriver.get("https://html5demos.com/drag/");
     webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/");
 
     List<Long> listTimestamps = new ArrayList<>();

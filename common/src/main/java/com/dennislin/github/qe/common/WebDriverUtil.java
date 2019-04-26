@@ -1,7 +1,7 @@
 package com.dennislin.github.qe.common;
 
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -17,7 +17,8 @@ public final class WebDriverUtil {
 
     static {
         try {
-            urlSeleniumServer = new URL("http://testUser:testPassword@localhost:9180/smiley-http-proxy-servlet/webdriver/wd/hub");
+            urlSeleniumServer = new URL("http://testUser:testPassword@localhost:8080/ciborgarmy.selenium/webdriver/wd/hub");
+            //urlSeleniumServer = new URL("http://localhost:5555/wd/hub");
         } catch (MalformedURLException exception) {
             LOGGER.severe("Unable to initialize connection to Selenium Server: " + exception.getMessage());
             System.exit(0);
@@ -33,28 +34,36 @@ public final class WebDriverUtil {
     }
 
     public static RemoteWebDriver getDefaultFirefox() {
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-
-        return new RemoteWebDriver(getSeleniumServerURL(), capabilities);
+        return new RemoteWebDriver(getSeleniumServerURL(), new FirefoxOptions());
     }
 
     /**
      * @return a WebDriver instance that references a headless Chrome browser
      */
-    public static RemoteWebDriver getDefaultChrome() {
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+    public static RemoteWebDriver getDefaultChromeHeadless() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("headless");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
-        return new RemoteWebDriver(getSeleniumServerURL(), capabilities);
+        return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
+    }
+
+    public static RemoteWebDriver getDefaultChromeBrowser() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+
+        return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
+    }
+
+    public static RemoteWebDriver getDefaultChromeUI() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+
+        return new RemoteWebDriver(getSeleniumServerURL(), chromeOptions);
     }
 
     public static RemoteWebDriver getDefaultSafari() {
-        throw new RuntimeException("Not implmented yet.");
+        throw new RuntimeException("Not implemented yet.");
     }
 
     public static RemoteWebDriver getWebDriverWithPropertiesFile(final String resourceLocation) {
-        throw new RuntimeException("Not implmented yet.");
+        throw new RuntimeException("Not implemented yet.");
     }
 }

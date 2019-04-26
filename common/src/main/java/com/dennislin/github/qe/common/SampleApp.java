@@ -1,8 +1,10 @@
 package com.dennislin.github.qe.common;
 
-import com.dennislin.github.qe.framework.AugmentedWebDriver;
+import com.dennislin.github.qe.framework.VisualWebDriver;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.List;
@@ -10,9 +12,9 @@ import java.util.Map;
 
 
 public class SampleApp {
-    public static final void main(final String[] args) throws Exception {
-        RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChrome();
-        AugmentedWebDriver webDriver = new AugmentedWebDriver(plainWebDriver);
+    public static final void main2(final String[] args) throws Exception {
+        RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeHeadless();
+        VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
         webDriver.get("http://automationpractice.com/index.php");
 
         System.out.println("**** WebDriver session ID: " + webDriver.getSessionId());

@@ -84,7 +84,6 @@ public class DragAndDrop {
       System.out.println(String.format("**** %d: %d", counter, (time2 - time1)));
     }
 
-
     testExtension(webDriver, elementBin, elementDraggable1, elementDraggable2, elementDraggable3, elementDraggable4, elementDraggable5);
 
     webDriver.close();
@@ -98,10 +97,15 @@ public class DragAndDrop {
                              final RemoteWebElement webElementDraggable4,
                              final RemoteWebElement webElementDraggable5) throws Exception {
     File source = webDriver.getScreenshotAs(OutputType.FILE);
+    Thread.sleep(1000);
     webDriver.dragAndDrop(webElementDraggable1, webElementBin);
+    Thread.sleep(1000);
     webDriver.dragAndDrop(webElementDraggable2, webElementBin);
+    Thread.sleep(1000);
     webDriver.dragAndDrop(webElementDraggable3, webElementBin);
+    Thread.sleep(1000);
     webDriver.dragAndDrop(webElementDraggable4, webElementBin);
+    Thread.sleep(1000);
     webDriver.dragAndDrop(webElementDraggable5, webElementBin);
   }
 

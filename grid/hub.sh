@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar selenium-server-standalone-3.13.0.jar -role hub
+java -jar selenium-server-standalone-3.141.59.jar -role hub

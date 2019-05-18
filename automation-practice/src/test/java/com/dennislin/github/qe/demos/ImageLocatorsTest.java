@@ -1,6 +1,6 @@
 package com.dennislin.github.qe.demos;
 
-import com.dennislin.github.qe.common.WebDriverUtil;
+import com.dennislin.github.qe.framework.WebDriverUtil;
 import com.dennislin.github.qe.framework.ImageFileUtil;
 import com.dennislin.github.qe.framework.ImageLocator;
 import com.dennislin.github.qe.framework.VisualWebDriver;
@@ -40,7 +40,7 @@ public class ImageLocatorsTest {
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
 
-    System.out.println("Webdriver sessionID:" + webDriver.getSessionId());
+    System.out.println("Webdriver sessionID: " + webDriver.getSessionId());
 
     final ImageLocator imageLocator = new ImageLocator("vision/findImageOnScreen/dragDrop/tomcat.png");
     List<Rectangle> listMatches = webDriver.getExtensionForVision().findImageOnScreen(imageLocator);

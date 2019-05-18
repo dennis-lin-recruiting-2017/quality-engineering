@@ -1,6 +1,6 @@
 package com.dennislin.github.qe.demos;
 
-import com.dennislin.github.qe.common.WebDriverUtil;
+import com.dennislin.github.qe.framework.WebDriverUtil;
 import com.dennislin.github.qe.framework.ImageLocator;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.Rectangle;

@@ -1,6 +1,6 @@
 package com.dennislin.github.qe.demos;
 
-import com.dennislin.github.qe.common.WebDriverUtil;
+import com.dennislin.github.qe.framework.WebDriverUtil;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,6 +21,7 @@ public class DragAndDrop {
     //RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeUI();
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
+    System.out.println("**** Webdriver Session ID: " + webDriver.getSessionId());
     webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/");
 
     List<Long> listTimestamps = new ArrayList<>();
@@ -34,6 +35,7 @@ public class DragAndDrop {
 
     listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable1 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#one"));
+    List<WebElement> listElementDraggable1 = webDriver.findElements(By.cssSelector("#one"));
     listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable2 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#two"));
     listTimestamps.add(System.currentTimeMillis());
@@ -43,6 +45,8 @@ public class DragAndDrop {
     listTimestamps.add(System.currentTimeMillis());
     RemoteWebElement elementDraggable5 = (RemoteWebElement) webDriver.findElement(By.cssSelector("#five"));
     listTimestamps.add(System.currentTimeMillis());
+    Rectangle rect = elementDraggable1.getRect();
+
 
     Document htmlDocument = Jsoup.parse(webDriver.getPageSource());
     List<Long> listTimestamps02 = new ArrayList<>();

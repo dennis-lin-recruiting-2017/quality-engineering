@@ -2,7 +2,7 @@
 
 java -Dwebdriver.gecko.driver=./drivers/geckodriver \
     -Dwebdriver.chrome.driver=./drivers/chromedriver \
-    -jar selenium-server-standalone-3.13.0.jar \
+    -jar selenium-server-standalone-3.141.59.jar \
     -role node \
+    -timeout 60 \
     -nodeConfig nodeConfig.json
-    #-timeout 60 \

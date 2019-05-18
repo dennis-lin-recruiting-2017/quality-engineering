@@ -1,7 +1,7 @@
 package com.dennislin.github.qe.automationpractice.pages;
 
-import com.dennislin.github.qe.framework.VisualWebDriver;
 import com.dennislin.github.qe.framework.BasePageObject;
+import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

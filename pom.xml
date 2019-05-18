@@ -10,7 +10,7 @@
   <name>${project.version} - ${project.artifactId}</name>
 
   <properties>
-    <selenium.version>3.13.0</selenium.version>
+    <selenium.version>3.141.59</selenium.version>
   </properties>
 
   <repositories>

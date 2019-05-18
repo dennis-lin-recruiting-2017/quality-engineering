@@ -1,7 +1,7 @@
 package com.dennislin.github.qe.automationpractice;
 
 import com.dennislin.github.qe.automationpractice.pages.LandingPage;
-import com.dennislin.github.qe.common.WebDriverUtil;
+import com.dennislin.github.qe.framework.WebDriverUtil;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

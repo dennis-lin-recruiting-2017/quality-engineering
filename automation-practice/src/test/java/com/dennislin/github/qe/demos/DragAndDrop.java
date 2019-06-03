@@ -23,6 +23,7 @@ public class DragAndDrop {
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     System.out.println("**** Webdriver Session ID: " + webDriver.getSessionId());
     webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/");
+    webDriver.getPageSource();
 
     List<Long> listTimestamps = new ArrayList<>();
 

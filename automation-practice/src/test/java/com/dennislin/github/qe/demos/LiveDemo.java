@@ -45,6 +45,7 @@ public class LiveDemo {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeBrowser();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
+    final String document = webDriver.getPageSource();
     final SessionId sessionId = webDriver.getSessionId();
     System.out.println("**** Session ID: " + sessionId.toString());
     for (File imageFile : imageFiles) {

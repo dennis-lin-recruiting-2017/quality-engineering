@@ -87,12 +87,6 @@
         <version>1.12</version>
       </dependency>
       <dependency>
-        <groupId>net.sf.json-lib</groupId>
-        <artifactId>json-lib</artifactId>
-        <version>2.4</version>
-        <classifier>jdk15</classifier>
-      </dependency>
-      <dependency>
         <groupId>org.monte</groupId>
         <artifactId>screen-recorder</artifactId>
         <version>0.7.7</version>
@@ -149,11 +143,6 @@
         <groupId>com.graphql-java</groupId>
         <artifactId>graphql-java-annotations</artifactId>
         <version>3.0.3</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>4.5.2</version>
       </dependency>
       <!--
          Selenium dependencies.
@@ -303,12 +292,6 @@
               <artifactId>hsqldb</artifactId>
               <version>2.4.1</version>
             </dependency>
-            <dependency>
-              <groupId>net.sf.json-lib</groupId>
-              <artifactId>json-lib</artifactId>
-              <version>2.4</version>
-              <classifier>jdk15</classifier>
-            </dependency>
           </dependencies>
         </plugin>
         <plugin>
@@ -360,12 +343,6 @@
               <groupId>org.hsqldb</groupId>
               <artifactId>hsqldb</artifactId>
               <version>2.4.1</version>
-            </dependency>
-            <dependency>
-              <groupId>net.sf.json-lib</groupId>
-              <artifactId>json-lib</artifactId>
-              <version>2.4</version>
-              <classifier>jdk15</classifier>
             </dependency>
             <dependency>
               <groupId>com.fasterxml.uuid</groupId>
@@ -460,9 +437,6 @@
      -->
     <module>../ciborgarmy</module>
     <module>../quality-engineering-framework</module>
-    <module>common</module>
     <module>automation-practice</module>
-    <module>google</module>
-    <module>gmail</module>
   </modules>
 </project>

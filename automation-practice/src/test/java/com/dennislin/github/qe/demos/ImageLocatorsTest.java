@@ -1,7 +1,6 @@
 package com.dennislin.github.qe.demos;
 
 import com.dennislin.github.qe.framework.WebDriverUtil;
-import com.dennislin.github.qe.framework.ImageFileUtil;
 import com.dennislin.github.qe.framework.ImageLocator;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.Rectangle;
@@ -11,11 +10,12 @@ import org.testng.annotations.Test;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class ImageLocatorsTest {
   @Test
-  public void testImageLocatorDragAndDrop() throws IOException {
+  public void testImageLocatorDragAndDrop() throws IOException, InterruptedException, URISyntaxException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/");
@@ -35,7 +35,7 @@ public class ImageLocatorsTest {
   }
 
   @Test
-  public void testImageLocatorExists() throws IOException {
+  public void testImageLocatorExists() throws IOException, InterruptedException, URISyntaxException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -52,7 +52,7 @@ public class ImageLocatorsTest {
   }
 
   @Test
-  public void testMultipleImageLocatorsAllExist() throws IOException {
+  public void testMultipleImageLocatorsAllExist() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -83,7 +83,7 @@ public class ImageLocatorsTest {
   }
 
   @Test
-  public void testMultipleImageLocatorsNoneExist() throws IOException {
+  public void testMultipleImageLocatorsNoneExist() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -101,7 +101,7 @@ public class ImageLocatorsTest {
   }
 
   @Test
-  public void testMultipleImageLocatorsSomeExist() throws IOException {
+  public void testMultipleImageLocatorsSomeExist() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -119,7 +119,7 @@ public class ImageLocatorsTest {
   }
 
   @Test
-  public void testClickOnImageThatExists() throws IOException {
+  public void testClickOnImageThatExists() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -128,7 +128,7 @@ public class ImageLocatorsTest {
     Assert.assertTrue(webDriver.getExtensionForVision().clickOnImage(imageLocator));
 
     final BufferedImage screenshot = webDriver.takeScreenshot();
-    ImageFileUtil.saveBufferedImageToFile(screenshot, "screenshotClickOnImage.png");
+    VisualWebDriver.saveBufferedImageToFile(screenshot, "screenshotClickOnImage.png");
 
     webDriver.close();
   }

@@ -14,7 +14,7 @@
   <dependencies>
     <dependency>
       <groupId>com.dennis.github-public</groupId>
-      <artifactId>quality-engineering.common</artifactId>
+      <artifactId>quality-engineering.framework</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
     <!--
@@ -50,11 +50,6 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>net.sf.json-lib</groupId>
-      <artifactId>json-lib</artifactId>
-      <classifier>jdk15</classifier>
     </dependency>
     <!--
        Database dependencies.

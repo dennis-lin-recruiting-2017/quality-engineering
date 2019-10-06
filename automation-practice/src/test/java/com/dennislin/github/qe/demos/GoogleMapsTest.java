@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class GoogleMapsTest {
@@ -34,7 +35,7 @@ public class GoogleMapsTest {
   };
 
   @Test
-  public void testGoogleMaps() throws IOException {
+  public void testGoogleMaps() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get(Locations.INFINITE_LOOP.getUrl());

@@ -1,7 +1,6 @@
 package com.dennislin.github.qe.demos;
 
 import com.dennislin.github.qe.framework.WebDriverUtil;
-import com.dennislin.github.qe.framework.ImageFileUtil;
 import com.dennislin.github.qe.framework.ImageLocator;
 import com.dennislin.github.qe.framework.VisualWebDriver;
 import org.openqa.selenium.Rectangle;
@@ -13,6 +12,7 @@ import org.testng.annotations.Test;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class LiveDemo {
@@ -125,7 +125,7 @@ public class LiveDemo {
 
 
   @Test
-  public void testClickOnImageThatExists() throws IOException {
+  public void testClickOnImageThatExists() throws IOException, URISyntaxException, InterruptedException {
     RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://localhost:8080");
@@ -134,7 +134,7 @@ public class LiveDemo {
     Assert.assertTrue(webDriver.getExtensionForVision().clickOnImage(imageLocator));
 
     final BufferedImage screenshot = webDriver.takeScreenshot();
-    ImageFileUtil.saveBufferedImageToFile(screenshot, "screenshotClickOnImage.png");
+    VisualWebDriver.saveBufferedImageToFile(screenshot, "screenshotClickOnImage.png");
 
     webDriver.close();
   }

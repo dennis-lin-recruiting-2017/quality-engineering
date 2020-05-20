@@ -80,6 +80,14 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
     </dependency>
+    <!--
+      Proxy Server
+      -->
+    <dependency>
+      <groupId>net.lightbody.bmp</groupId>
+      <artifactId>browsermob-core</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

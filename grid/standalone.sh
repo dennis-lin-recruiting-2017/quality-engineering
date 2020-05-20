@@ -1,5 +1,6 @@
 #!/bin/sh
 
 java -Dwebdriver.gecko.driver=./drivers/geckodriver \
-    -jar selenium-server-standalone-3.13.0.jar \
+    -Dwebdriver.chrome.driver=./drivers/chromedriver \
+    -jar selenium-server-standalone-3.141.59.jar \
     -role standalone

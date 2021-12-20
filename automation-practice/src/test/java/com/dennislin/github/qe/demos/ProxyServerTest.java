@@ -20,7 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
-import java.io.File;
+import javax.json.Json;
+import javax.json.JsonObject;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 
@@ -42,7 +47,6 @@ public class ProxyServerTest {
       seleniumProxy.setHttpProxy(strProxyServer);
       seleniumProxy.setSslProxy(strProxyServer);
       proxyServer.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-      proxyServer.newHar("test");
     } catch (UnknownHostException e) {
       e.printStackTrace();
     }
@@ -59,20 +63,53 @@ public class ProxyServerTest {
     capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
     capabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
 
-    final WebDriver driver = new RemoteWebDriver(WebDriverUtil.getSeleniumServerURL(), new FirefoxOptions(capabilities));
+    //final WebDriver driver = new RemoteWebDriver(WebDriverUtil.getSeleniumServerURL(), new FirefoxOptions(capabilities));
+    final WebDriver driver = WebDriverUtil.getDefaultFirefox();
     driver.get("https://www.google.com");
     final WebElement webElement = driver.findElement(By.cssSelector("input[name='q']"));
-    webElement.sendKeys("hello");
-
-    final Har har = proxyServer.getHar();
-    final HarLog harLog = har.getLog();
-    for (final HarEntry harEntry : harLog.getEntries()) {
-      System.out.println("**** Proxy entry: " + harEntry.getRequest().getUrl());
+    for (char c : "Test Selenium ".toCharArray()) {
+      proxyServer.newHar("test01");
+      webElement.sendKeys("" + c);
+      Thread.sleep(250);
+      recordHar("test01");
     }
-    final File fileHar = new File("/Users/dennislin/test.har");
-    har.writeTo(fileHar);
+
+    for (char c : " Java".toCharArray()) {
+      proxyServer.newHar("test02");
+      webElement.sendKeys("" + c);
+      Thread.sleep(250);
+      recordHar("test02");
+    }
 
     Thread.sleep(5000);
     driver.close();
+  }
+
+  private static int counterHarEvents = 0;
+
+  private static final void recordHar(final String name) throws IOException {
+    final Har har = proxyServer.getHar();
+    final HarLog harLog = har.getLog();
+    System.out.println("**** Num proxy server entries: " + harLog.getEntries().size());
+    counterHarEvents += harLog.getEntries().size();
+    for (final HarEntry harEntry : harLog.getEntries()) {
+      System.out.println("**** Proxy entry: " + harEntry.toString());
+    }
+    //*/
+    /*
+    final File fileHar = new File(String.format("/Users/dennislin/%s.har", name));
+    har.writeTo(fileHar);
+    //*/
+    final StringWriter writer = new StringWriter();
+    har.writeTo(writer);
+
+    byte[] data = writer.toString().getBytes();
+    System.out.println("Data length: " + data.length);
+    final InputStream inputStream = new ByteArrayInputStream(data);
+    final JsonObject jsonHar = Json.createReader(inputStream).readObject();
+    //final JsonObject test01 = jsonHar.getJsonObject("log").getJsonObject("entries"));
+    System.out.println(jsonHar.get("log"));
+
+    System.out.println("Num Har entries: " + counterHarEvents);
   }
 }

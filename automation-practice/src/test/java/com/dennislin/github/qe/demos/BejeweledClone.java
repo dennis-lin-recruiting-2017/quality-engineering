@@ -16,6 +16,7 @@ import java.util.List;
 
 public class BejeweledClone {
   private static final Logger LOGGER = LoggerFactory.getLogger(BejeweledClone.class);
+
   @Test
   public void testScreenshot(final ITestContext testContext)
       throws IOException, InterruptedException, URISyntaxException {

@@ -11,7 +11,5 @@ public class TestPurchase {
     final RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
     final VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
     webDriver.get("http://www.automationpractice.com");
-
-    
   }
 }

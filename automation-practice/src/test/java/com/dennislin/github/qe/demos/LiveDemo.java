@@ -42,9 +42,9 @@ public class LiveDemo {
     final File[] imageFiles = testDirectory.listFiles();
 
     //RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultFirefox();
-    RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeBrowser();
-    VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
-    webDriver.get("http://localhost:8080");
+    final RemoteWebDriver plainWebDriver = WebDriverUtil.getDefaultChromeBrowser();
+    final VisualWebDriver webDriver = new VisualWebDriver(plainWebDriver);
+    webDriver.get("http://localhost:8080/ciborgarmy.testWebapps/html5drag/index.html");
     final String document = webDriver.getPageSource();
     final SessionId sessionId = webDriver.getSessionId();
     System.out.println("**** Session ID: " + sessionId.toString());
